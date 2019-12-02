@@ -18,7 +18,7 @@
           <img src="<?php echo base_url();?>assets/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Muchamad Aqiel H M</a>
+          <a href="<?= base_url('index.php/user')?>" class="d-block"><?= $this->session->userdata('userName')?></a>
         </div>
       </div>
 
@@ -37,13 +37,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('/index.php/sarana')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Sarana</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?= base_url('/index.php/prasarana')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Prasarana</p>
                 </a>
@@ -51,7 +51,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('/index.php/admin/daftarrequest')?>" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 List Request
@@ -60,7 +60,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('/index.php/peminjaman')?>" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 List Peminjaman
@@ -69,7 +69,7 @@
           </li>
           <li class="nav-header">Other</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('/index.php/main/logout')?>" class="nav-link">
               <i class="nav-icon fas fa-exit"></i>
               <p>Logout</p>
             </a>

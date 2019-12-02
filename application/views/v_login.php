@@ -14,11 +14,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
-<body>
+<body style="overflow-x: hidden;">
     <div class="container login">
             <div class="row">
-                <div class="col-5">
-                    <div class="container form">
+                <div class="col-6">
+                    <div class="container form" style="position:relative; top: 25%;">
                         <div class="judul">
                             <h2>Welcome to</h2>
                             <h1>SPSPU</h1>
@@ -33,21 +33,21 @@
                             </div>
                             <div class="after-input">
                                 <p><a href="<?php echo base_url();?>/index.php/ForgotPassword">Forgot Password ?</a></p>
-                                <button type="submit" name="login_button" class="button">Masuk</button>
-                                <p>Don't have account? <a href="<?php echo base_url();?>/index.php/main/register">Create Account</a></p>
+                                <button type="submit" name="login_button" class="button btn col-3 btn-success" style="margin-bottom: 16px;">Masuk</button>
+                                <p>Don't have account? <a href="<?php echo base_url();?>index.php/main/register">Create Account</a></p>
                             </div>
-                        </form>  
-                    </div>      
-                </div>
-                <div class="col-7">
-                    <div class= "container background"></div>
-                        <img src="<?php echo base_url();?>/assets/img/background.png">
-                        <div class="container logo">
-                            <img src="<?php echo base_url();?>/assets/img/logo.png" >
-                            <p>Sistem Peminjaman Sarana dan Prasarana Universitas</p>  
+                        </form>
                     </div>
-                </div>      
-            </div>   
+                </div>
+                <div class="col-5">
+                    <div class= "container background"></div>
+                        <img src="<?php echo base_url();?>/assets/img/background.png" width="148%" height="119%">
+                        <div style="position: absolute; top: 30%; bottom: 20%; left: 50%;" class="text-center">
+                            <img src="<?php echo base_url();?>/assets/img/logo.png" class="img-fluid" width="160px">
+                            <p style="font-size: 24px;" class="text-white">Sistem Peminjaman Sarana dan Prasarana Universitas</p>
+                    </div>
+                </div>
+            </div>
     </div>
 </body>
 </html>

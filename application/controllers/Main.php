@@ -11,6 +11,7 @@ class Main extends CI_Controller{
 	$this->load->database();
 	$this->load->helper('url');
 	$this->load->model('Akun_model');
+	$this->load->model('Admin_model');
 	$this->load->model('Mahasiswa_model');
   }
 
@@ -30,12 +31,12 @@ class Main extends CI_Controller{
 
         if($result != null){
             $this->session->set_userdata('userName' ,$this->input->post('username'));
-            $this->session->set_userdata('userId' ,$result->user_id);
+            $this->session->set_userdata('userId' ,$result->id_user);
             $this->session->set_userdata('level' ,$result->level);
             if($result->level != "Admin")
-                redirect("user/index/".$result->user_id);
+                redirect("user/daftarrequest");
             else
-                redirect("admin/index/".$result->user_id);
+                redirect("admin/daftarrequest");
         }
     }
 
@@ -66,17 +67,23 @@ class Main extends CI_Controller{
         $dataUser['alamat'] = "";
         $dataUser['fakultas'] = "";
 
-        $statusAkun = $this->Akun_model->register($dataAkun);
-        $statusMahasiswa = $this->Mahasiswa_model->register($dataUser);
-        if ($statusAkun && $statusMahasiswa){
-            $this->session->set_flashdata('pesan','Registrasi Berhasil!');
-            $this->session->set_userdata('userName' ,$dataAkun['username']);
-            $this->session->set_userdata('userId' ,$dataAkun['id_user']);
-            $this->session->set_userdata('level' ,$dataAkun['level']);
-            redirect("user/index/".$dataAkun['id_user']);
+        if($this->Admin_model->getData($this->input->post('id')) != NULL){
+          // echo "Data sudah ada";
+          $this->session->set_userdata('validasiAkun' ,"NIM/NIP sudah terdaftar");
+        }else{
+          $statusAkun = $this->Akun_model->register($dataAkun);
+          $statusMahasiswa = $this->Mahasiswa_model->register($dataUser);
+          if ($statusAkun && $statusMahasiswa){
+              $this->session->set_flashdata('pesan','Registrasi Berhasil!');
+              $this->session->set_userdata('userName' ,$dataAkun['username']);
+              $this->session->set_userdata('userId' ,$dataAkun['id_user']);
+              $this->session->set_userdata('level' ,$dataAkun['level']);
+              redirect("user/index/".$dataAkun['id_user']);
+          }
+          else
+              $this->session->set_flashdata('pesan','Registrasi Gagal!');
         }
-        else
-            $this->session->set_flashdata('pesan','Registrasi Gagal!');
+
     }
 
     $user = $this->session->userdata('userName');
@@ -88,6 +95,18 @@ class Main extends CI_Controller{
     $this->load->view('v_register',$data);
   }
 
+  function logout()
+{
+    $user_data = $this->session->all_userdata();
+        foreach ($user_data as $key => $value) {
+            if ($key != 'userName' && $key != 'userId' && $key != 'level') {
+                $this->session->unset_userdata($key);
+            }
+        }
+    $this->session->sess_destroy();
+    redirect('main');
+}
+
 //   function pageUser(){
 //     $id = getId();
 //     redirect(base_url()."user/index/".$id);
@@ -96,7 +115,7 @@ class Main extends CI_Controller{
 //   function pageAdmin(){
 
 //   }
-  
+
 //   function getId(){
 
 //   }

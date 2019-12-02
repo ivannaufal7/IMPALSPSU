@@ -57,8 +57,7 @@ function changeStatus($status){
 
 function getAll(){
     // $query = $this->db->get('peminjaman
-    // $query = $this->db->query("select * FROM prasarana INNER JOIN peminjaman ON prasarana.id_prasarana = peminjaman.id_prasarana INNER JOIN verifikasi ON verifikasi.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN mahasiswa ON mahasiswa.nim = peminjaman.nim LEFT JOIN staff ON staff.nip = peminjaman.nip");
-    $query = $this->db->query("SELECT * FROM `peminjaman` left join prasarana on peminjaman.id_prasarana = prasarana.id_prasarana left join sarana on sarana.id_sarana = peminjaman.id_sarana LEFT JOIN pengembalian ON pengembalian.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN verifikasi ON verifikasi.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN mahasiswa ON mahasiswa.nim = peminjaman.nim LEFT JOIN staff ON staff.nip = peminjaman.nip order by peminjaman.id_peminjaman ASC");
+    $query = $this->db->query("select * FROM prasarana INNER JOIN peminjaman ON prasarana.id_prasarana = peminjaman.id_prasarana INNER JOIN verifikasi ON verifikasi.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN mahasiswa ON mahasiswa.nim = peminjaman.nim LEFT JOIN staff ON staff.nip = peminjaman.nip");
     $result = $query->result();
     return $result; //returned array
 }
@@ -73,8 +72,7 @@ function getAllRequest(){
 
 function getById($id){
     // get peminjaman by id from database
-    // $query = $this->db->query("select * FROM prasarana INNER JOIN peminjaman ON prasarana.id_prasarana = peminjaman.id_prasarana INNER JOIN verifikasi ON verifikasi.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN mahasiswa ON mahasiswa.nim = peminjaman.nim LEFT JOIN staff ON staff.nip = peminjaman.nip WHERE peminjaman.nim = '123' or peminjaman.nip = '123'");
-    $query = $this->db->query("SELECT * FROM `peminjaman` left join prasarana on peminjaman.id_prasarana = prasarana.id_prasarana left join sarana on sarana.id_sarana = peminjaman.id_sarana LEFT JOIN pengembalian ON pengembalian.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN verifikasi ON verifikasi.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN mahasiswa ON mahasiswa.nim = peminjaman.nim LEFT JOIN staff ON staff.nip = peminjaman.nip WHERE peminjaman.nim = '$id' or peminjaman.nip = '$id' order by peminjaman.id_peminjaman ASC");
+    $query = $this->db->query("select * FROM prasarana INNER JOIN peminjaman ON prasarana.id_prasarana = peminjaman.id_prasarana INNER JOIN verifikasi ON verifikasi.id_peminjaman = peminjaman.id_peminjaman LEFT JOIN mahasiswa ON mahasiswa.nim = peminjaman.nim LEFT JOIN staff ON staff.nip = peminjaman.nip WHERE peminjaman.nim = '123' or peminjaman.nip = '123'");
     // $this->db->where('nim',$id);
     // $query = $this->db->get('peminjaman');
     return  $query->result(); //returns result in array forms(this is not necessary btw, let me know if u need only one line, or change "$query->result_array()" to "$query->row()")
@@ -84,7 +82,7 @@ function getByIdPinjam($id){
     // get peminjaman by id from database
     // $this->db->where('id_peminjaman',$id);
     // $query = $this->db->get('peminjaman');
-    $query = $this->db->query("SELECT * FROM `peminjaman` LEFT JOIN prasarana ON peminjaman.id_prasarana = prasarana.id_prasarana LEFT JOIN sarana ON sarana.id_sarana = peminjaman.id_sarana where peminjaman.id_peminjaman = '$id'");
+    $query = $this->db->query("SELECT * FROM `peminjaman` INNER JOIN prasarana ON peminjaman.id_prasarana = prasarana.id_prasarana where peminjaman.id_peminjaman = '$id'");
     return  $query->result_array(); //returns result in array forms(this is not necessary btw, let me know if u need only one line, or change "$query->result_array()" to "$query->row()")
 }
 

@@ -14,15 +14,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Register</title>
 </head>
-<body>
-        <div class="container">
+<body style="overflow-x: hidden;">
+        <div class="container login">
                 <div class="row">
-                    <div class="col-5">
-                        <div class="container form">
+                    <div class="col-6">
+                        <div class="container form" style="position: relative; top: 25%;">
                             <div class="judul">
                                 <h2>Register</h2>
                                 <p>Please register to access our property </p>
-                            </div>    
+                            </div>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?= $this->session->userdata('validasiAkun');?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
                             <form method="post">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="nama" placeholder="Nama">
@@ -30,28 +36,27 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="id" placeholder="NIP / NIM">
                                 </div>
-                                <div class="form-group">   
+                                <div class="form-group">
                                     <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" name="repassword" placeholder="RePassword">
                                 </div>
                                 <div class="after-input">
-                                    <button type="submit" name="register_button" class="button">Daftar</button>
-                                    <p>have account? <a href="<?php echo base_url();?>/index.php/main/login">Sign in</a></p>
+                                    <button type="submit" name="register_button" class="button btn btn-success">Daftar</button>
+                                    <p>have account? <a href="<?php echo base_url();?>index.php/main/login">Sign in</a></p>
                                 </div>
-                            </form>  
-                        </div>    
+                            </form>
+                        </div>
                     </div>
-                    <div class="col-7">
-                        <div class="container background">
-                            <img src="<?php echo base_url();?>/assets/img/background.png">
+                    <div class="col-5">
+                        <div class= "container background"></div>
+                            <img src="<?php echo base_url();?>/assets/img/background.png" width="148%" height="119%">
+                            <div style="position: absolute; top: 30%; bottom: 20%; left: 50%;" class="text-center">
+                                <img src="<?php echo base_url();?>/assets/img/logo.png" class="img-fluid" width="160px">
+                                <p style="font-size: 24px;" class="text-white">Sistem Peminjaman Sarana dan Prasarana Universitas</p>
                         </div>
-                        <div class="container logo">  
-                            <img src="<?php echo base_url();?>/assets/img/logo.png" >
-                            <p>Sistem Peminjaman Sarana dan Prasarana Universitas</p>  
-                        </div>
-                    </div>   
+                    </div>
                     </div>
                 </div>
         </div>
