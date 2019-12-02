@@ -33,7 +33,7 @@
             </thead>
             <tbody>
               <?php error_reporting(0); $i = 0; foreach ($sarana as $row) { $i++;?>
-                <tr>
+                <tr onclick="document.location = '<?= base_url('index.php/sarana/detailSarana/').$row->id_sarana?>';">
                   <th class="align-middle" scope="row"><?= $i?></th>
                   <td class="align-middle"><?= $row->nama_sarana?></td>
                   <td class="align-middle"><strong><?= $row->kapasitas?></strong><br>Orang</td>

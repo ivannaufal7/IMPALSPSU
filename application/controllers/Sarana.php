@@ -32,4 +32,8 @@ class Sarana extends CI_Controller{
     redirect('Sarana');
 
 	}
+  function detailSarana($id){
+    $data['sarana'] = $this->Sarana_model->getWhereSaranaId('sarana',array("id_sarana" => $id));
+    $this->load->view('v_detail_sarana',$data);
+  }
 }

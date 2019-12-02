@@ -45,8 +45,8 @@
                 foreach ($prasarana as $row) {
                     $i++;
                   ?>
-                  <tr>
-                    <th class="align-middle" scope="row"><?= $i?></th>
+                  <tr onclick="document.location = '<?= base_url('index.php/prasarana/detailPrasarana/').$row->id_prasarana?>';">
+                    <td class="align-middle" scope="row"><?= $i?></td>
                     <td class="align-middle"><?= $row->nama_prasarana?></td>
                     <td class="align-middle"><?= $row->tgl_upload?></td>
                     <td class="align-middle"><?= $row->jenis_prasarana?></td>

@@ -31,4 +31,9 @@ class Prasarana extends CI_Controller{
     redirect('Prasarana');
 
 	}
+
+  function detailPrasarana($id){
+    $data['prasarana'] = $this->Prasarana_model->getWherePrasaranaId('prasarana',array("id_prasarana" => $id));
+    $this->load->view('v_detail_prasarana',$data);
+  }
 }
